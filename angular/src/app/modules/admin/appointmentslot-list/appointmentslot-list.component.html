@@ -1,0 +1,96 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <!-- <app-alert></app-alert> -->
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Appointment Slots</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Appointment Slots</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- {{usersAr | json}} -->
+    <!-- {{userData | json }} -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Get all the Appointment slots</h3>
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-primary pull-right" (click)="rerender()">
+                                    <i class="fa fa-refresh"></i> Rerender
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- {{userData | json}} -->
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Appointment Date</th>
+                                            <th>Session</th>
+                                            <th>Start Time</th>
+                                            <th>Slot Interval</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr *ngFor="let rowData of userData | keyvalue; let i = index;">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ appointmentDate }}</td>
+                                            <td>{{ rowData.value.slotEvent }}</td>
+                                            <td>{{ rowData.value.startTime }}</td>
+                                            <td><span class="badge badge-info">{{ rowData.value.slotInterval }}</span></td>
+                                        </tr>
+                                    </tbody>
+
+                                    <tfoot>
+                                        <tr>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search Id" name="search-Id" /></th>
+                                            <th><input type="text" class="form-control" autocomplete="off" placeholder="Search Slot appointment Date" name="search-Date" /></th>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search session" name="search-session" />
+                                            </th>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search time" name="search-time" />
+                                            </th>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search interval" name="search-interval" />
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- Main content -->
+
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

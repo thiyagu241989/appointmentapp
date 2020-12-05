@@ -1,0 +1,138 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Slot Creation</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Slot Creation</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- /.col -->
+                <div class="col-3 offset-1">
+                    <div class="card card-outline card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Choose Date </h3>
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <input type="date" #appointmentDate class="form-control" data-date-inline-picker="true" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="card card-outline card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Morning : <br> <b class="text-info">09.00 AM to 12.00 PM</b></h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <!-- form start -->
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <!-- placeholder="Time range from 09:00 am to 12:00 pm" min="09:00 am" max="12:00 pm"-->
+                                        <div class="time-range-example">
+                                            <input type="text" #rangeMorngFrom class="form-control" [ngxTimepicker]="rangeFrom" [format]="24" [min]=mrngSlotStartTime [max]=mrngSlotEndTime>
+                                            <ngx-material-timepicker #rangeFrom [minutesGap]="30"></ngx-material-timepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="button" (click)="onAddMorningSlot(rangeMorngFrom)" class="btn btn-success"><i class="fas fa-plus"></i> Add Slot</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br> {{finalmorngTimeSlot | json}}
+                            <div class="row">
+                                <div *ngFor="let val of finalmorngTimeSlot; let i = index;">
+                                    <div [ngClass]="'col-md-12'">
+                                        <button type="button" class="col-md-12 btn btn-block btn-outline-primary">{{val.startTime}}</button> &nbsp;&nbsp;
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" (click)="onSubmitMoringAppointment(appointmentDate)" class="btn btn-primary">Submit</button>
+                        </div>
+
+                    </div>
+
+                    <div class="card card-outline card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Evening <br><b class="text-info">05.00 PM to 09.00 PM</b></h3>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <!-- placeholder="Time range from 05:00 pm to 09:00 pm" min="05:00 pm" max="09:00 pm"-->
+                                        <div class="time-range-example">
+                                            <input type="text" #rangeEvngStartFrom class="form-control" [ngxTimepicker]="rangeEvngFrom" [format]="24" [min]=evngSlotStartTime [max]=evngSlotEndTime>
+                                            <ngx-material-timepicker #rangeEvngFrom [minutesGap]="30"></ngx-material-timepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="button" (click)="onAddEveningSlot(rangeEvngStartFrom)" class="btn btn-success"><i class="fas fa-plus"></i> Add Slot </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br> {{finalEvngTimeSlot | json}}
+
+                            <div class="row">
+                                <div *ngFor="let val of finalEvngTimeSlot; let i = index;">
+                                    <div [ngClass]="'col-md-12'">
+                                        <button type="button" class="col-md-12 btn btn-block btn-outline-primary">{{val.startTime}}</button> &nbsp;&nbsp;
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" (click)="onSubmitEveningAppointment(appointmentDate)" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+
+
+</div>
+<!-- /.content-wrapper -->

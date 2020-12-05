@@ -1,0 +1,14 @@
+<div class="modal fade" #myModal id="myModal" [style.margin-top.%] = "marginTop" data-keyboard="false" data-backdrop="static" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <ng-content></ng-content>
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer"> -->
+            <!-- this button is hidden, used to close from typescript -->
+            <button type="button" id="close-modal" (click)="hideModal()" data-dismiss="modal" style="display: none">Close</button>
+
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+<!-- <div class="alert alert-styled-left alert-arrow-left bg-white" *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+    <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+    <h6 class="alert-heading mb-1 font-weight-semibold"> {{message.type}}! </h6>
+    {{message.text}}
+</div> -->
+
+
+<div class="alert alert-info alert-dismissible">
+    <h6><i class="icon fas fa-check"></i> Indicates a successful or positive action.</h6>
+</div>
+
+<!--<div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>-->
+<!--<div *ngIf="message" class="callout" [ngClass]="{ 'alert': message, 'callout-success': message.type === 'success', 'callout-danger': message.type === 'error' }">-->
+    <!--<h4>-->
+        <!--<b *ngIf="message.type === 'success'; else error"> <i class="fa fa-check-circle" aria-hidden="true"></i> </b>-->
+        <!--<ng-template #error>-->
+            <!--<i class="fa fa-times-circle" aria-hidden="true"></i>-->
+        <!--</ng-template>-->
+        <!--{{message.type}}!-->
+    <!--</h4>-->
+    <!--<p>{{message.text}}</p>-->
+<!--</div>-->

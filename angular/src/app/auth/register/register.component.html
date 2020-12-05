@@ -1,0 +1,283 @@
+<div class="register-box">
+    <div class="register-logo">
+      <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div>
+  
+    <div class="card">
+      <div class="card-body register-card-body">
+        <p class="login-box-msg">Register a new membership</p>
+  
+        <form action="../../index.html" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Full name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Retype password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                <label for="agreeTerms">
+                 I agree to the <a href="#">terms</a>
+                </label>
+              </div>
+            </div>
+           
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+           
+          </div>
+        </form>
+  
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i>
+            Sign up using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i>
+            Sign up using Google+
+          </a>
+        </div>
+  
+        <a href="login.html" class="text-center">I already have a membership</a>
+      </div>
+     
+    </div>
+  </div>
+
+  <!-- <div class="card m-3">
+    <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Title</label>
+                    <select formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                        <option value=""></option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Title is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" 
+					[ngClass]="{ 'is-invalid': submitted && f.firstName.errors || f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)}" />
+					
+                    <div *ngIf="submitted && f.firstName.errors || f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)" 
+					    class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
+                </div>
+				
+				<select class="label2" name="account" #mySelectCurrency [(ngModel)]="currentSelectedOption"
+              (change)='onCurrencySelected(mySelectCurrency.value)' > 
+                <option [ngValue]="null" >Select Currency</option>
+                <option *ngFor="let item of acccountList" [ngValue]="item.value" [selected]="item.value ==='fsl'">
+                    {{item.name}}
+                </option>
+            </select> 
+			
+               	<div class="form-group form-check">
+			<ui-switch [ngModel]="enable2faStatus" size="small"
+                        (ngModelChange)="manualUpdateEvent($event)"></ui-switch>
+			</div>
+			
+                <div class="form-group col-5">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+			
+			
+			<div class="input-group">
+		
+			<input [type]="fieldTextType ?'text':'password'" formControlName="password"
+				class="form-control"
+				[ngClass]="{ 'is-invalid': submitted && f.password.errors || f.password.invalid && (f.password.dirty || f.password.touched)} />
+		
+			<div class="input-group-append">
+				<span class="input-group-text">
+					<i class="fa" [ngClass]="{
+						  'fa-eye-slash': !fieldTextType,
+						  'fa-eye': fieldTextType
+						}" (click)="toggleFieldTextType()"></i>
+				</span>
+			</div>
+			<div *ngIf="submitted && f.password.errors" class="error invalid-feedback">
+				<div *ngIf="f.password.errors.required">Password is required</div>
+				<div *ngIf="f.password.errors.minlength">Password must be at least 6
+					characters</div>
+			</div>
+		  </div>
+
+
+			<div class="form-group">
+				<label> Confirm Password </label>
+				<div class="input-group">
+				
+					<input #confirmPassword [type]="fieldTextType ? 'text' : 'password'"
+						class="form-control" formControlName="confirmPassword"
+						[ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+					<div class="input-group-append">
+						<span class="input-group-text">
+							<i class="fa" [ngClass]="{
+								  'fa-eye-slash': !fieldTextType,
+								  'fa-eye': fieldTextType
+								}" (click)="toggleFieldTextType()"></i>
+						</span>
+					</div>
+				
+					<div *ngIf="submitted && s.confirmPassword.errors"
+						class="error invalid-feedback">
+						<div *ngIf="f.confirmPassword.errors.required">Confirm Password is required
+						</div>
+						<div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+					</div>
+				</div>
+
+			</div>
+								
+								
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+            </div>
+			
+			
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+<!-- <div class="card">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-3">
+                <h3>Angular 8 Reactive Form Validation</h3>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" formControlName="firstName" class="form-control" #firstName/>
+                        <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="f.firstName.errors.required">
+                                First Name is required.
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" formControlName="name" class="form-control" #name/>
+                        <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="f.name.errors.required">
+                                Username is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" #email/>
+                        <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" #password/>
+                        <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control" #confirmPassword/>
+                        <div *ngIf="f.confirmPassword.invalid && (f.confirmPassword.dirty || f.confirmPassword.touched)"
+                             class="alert alert-danger">
+                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" [disabled]="registerForm.pristine || registerForm.invalid">
+                            Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div> -->

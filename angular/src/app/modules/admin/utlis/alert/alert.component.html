@@ -1,0 +1,9 @@
+<div class="alert" role="alert" *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+    <button type="button" class="close" data-dismiss="alert"><span>×</span></button> 
+    <strong> {{message.type}}! </strong>  {{message.text}}	
+</div>
+<!-- <div class="alert alert-info alert-dismissible">
+    <h6><i class="icon fas fa-check"></i> Indicates a successful or positive action.</h6>
+</div> -->
+
+

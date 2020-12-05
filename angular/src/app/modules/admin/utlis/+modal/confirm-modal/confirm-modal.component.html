@@ -1,0 +1,28 @@
+ <!-- modal-lg modal-sm  modal-md-->
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="mt-3" style="margin: 0 auto">{{title || 'Confirm'}}</h4>
+            </div>
+            <div class="modal-body p-5">
+                {{emailArr }} {{name}} {{confirmBox}}
+                <div class="form-group ">
+                    <label for="">Amount</label>
+                    <input type="text" class="form-control" style="font-size: 14px;" name="" placeholder="Enter Amount">
+                </div>
+                <div class="form-group mt-5">
+                    <label for="">Account Type</label>
+                    <br>
+                    <!-- <select [(ngModel)]="accountTypeValue">
+                <option value="" selected disabled>Choose Account Type</option>
+                <option *ngFor="let item of accountsList" [value]="item.value">{{item.name}}</option>
+            </select> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger btn-lg" (click)="close()">Cancel</button>
+                <button type="button" class="btn btn-primary btn-lg" (click)="confirm()">OK</button>
+            </div>
+
+        </div>
+    </div>
