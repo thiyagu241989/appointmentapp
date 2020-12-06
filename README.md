@@ -1,7 +1,7 @@
 # APPOINTMENTAPP
 
 ## Description
-[APPOINTMENTAPP] is an appointment manager. Users can book appointements on predefined time slots. These slots are defined by the doctor. Doctor can see the list of appointments on a specific day and the total number of appointments. 
+APPOINTMENTAPP is an appointment manager. Users can book appointements on predefined time slots. These slots are defined by the doctor. Doctor can see the list of appointments on a specific day and the total number of appointments. 
 
 Mongo Atlas is used to save the slots and appointment details.
 
