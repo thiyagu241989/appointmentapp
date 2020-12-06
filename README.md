@@ -15,7 +15,7 @@ Mongo Atlas is used to save the slots and appointment details.
 3. Mongo db
 
 ## Steps - api
-1. git clone https://gitlab.com/thiyagu.pp/appointmentapp
+1. git clone https://github.com/thiyagu241989/appointmentapp
 2. cd appointmentapp/api
 3. `npm i ` to install the dependencies.
 4. `npm run dev` to run the apis
