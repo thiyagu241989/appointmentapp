@@ -12,7 +12,7 @@ let Appointmentlist = require('../models/Appointmentlist');
 // Defined store route
 appointmentlistRoutes.route('/add').post(async function(req, res) {
     let check = await Appointmentlist.findOne({ appointmentDate: req.body.appointmentDate, startTime: req.body.startTime }).lean()
-    console.log(check)
+
     if (!check) {
         let permission = new Appointmentlist(req.body);
         permission.save()

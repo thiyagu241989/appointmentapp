@@ -39,7 +39,7 @@ export class AppointmentslotListComponent implements OnInit {
   //BackEnd Call Api:----------------------------------------------
   getAllRestApiResponse() {
       this.userService.getAppointmentSlot().subscribe(data => {
-         console.log('dataaa'+JSON.stringify(data));
+        
          this.userData = data;
         //   this.userData = data[0]['slot'];
         //   this.appointmentDate = data[0]['appointmentDate'];
@@ -71,7 +71,7 @@ export class AppointmentslotListComponent implements OnInit {
 
   //modal Call:
   viewRequestResponse(id) {
-      console.log(id);
+     
       this.paramsId = id;
      //  const obj = { _id: id };
   }

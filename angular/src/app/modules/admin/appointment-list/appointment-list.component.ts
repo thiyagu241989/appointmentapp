@@ -45,7 +45,7 @@ export class AppointmentListComponent implements OnInit {
     //BackEnd Call Api:----------------------------------------------
     getAllRestApiResponse() {
         this.userService.getAppointmentDetails().subscribe(data => {
-            console.log('trsnds:' + JSON.stringify(data));
+           
             this.userData = data['data'];
             this.appointmentCountData = data['count'];
           
@@ -76,14 +76,14 @@ export class AppointmentListComponent implements OnInit {
 
     //modal Call:
     viewRequestResponse(id) {
-        console.log(id);
+        
         this.paramsId = id;
         //  const obj = { _id: id };
     }
 
     searchDataFilter(appointmentVal){
         this.userService.getAppointmentSearchDetail(appointmentVal).subscribe(data => {
-            console.log('search:' + JSON.stringify(data));
+           
             this.userData = data['data'];
             this.appointmentCountData = data['count'];
             /* Calling the DT trigger to manually render the table*/
@@ -93,7 +93,7 @@ export class AppointmentListComponent implements OnInit {
     }
     onSearchAppointment(appointmentDate) {
         if (appointmentDate.value) {
-            console.log('inputDate' + appointmentDate.value);
+           
             let appointmentVal = appointmentDate.value;
             // this.userData= [];
             this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -106,7 +106,7 @@ export class AppointmentListComponent implements OnInit {
            
 
         } else {
-            console.log('null val');
+           
             this.toastr.error('Appointment date is required');
         }
 

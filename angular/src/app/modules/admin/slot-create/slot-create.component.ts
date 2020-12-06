@@ -43,11 +43,11 @@ export class SlotCreateComponent implements OnInit {
       this.morngStartTimeVal = this.convertFrom24To12Format(mrngStartTime.value);
       //check validation slots exists or not**:
       let AvailabilityStatus = this.CheckTimeMrngSlotExistsOrNot(this.morngStartTimeVal);
-      console.log('FinalTimeStatus' + AvailabilityStatus);
+     
       // final submition notification**
       if (AvailabilityStatus) {
         mrngStartTime.value = '';
-        this.toastr.success('Morning time slot added', 'Success');
+        // this.toastr.success('Morning time slot added', 'Success');
       } else {
         this.toastr.error('Time slot Already Exists');
       }
@@ -62,7 +62,7 @@ export class SlotCreateComponent implements OnInit {
 
       var isPresent = this.finalmorngTimeSlot.some(function (val) { return val.startTime === morngStartTimeVal });
       if (isPresent) {
-        console.log('exists');
+       
         return false;
       } else {
         const mrngSlotTimeObj = {
@@ -90,7 +90,7 @@ export class SlotCreateComponent implements OnInit {
   onSubmitMoringAppointment(appointmentDate) {
 
     if (appointmentDate.value) {
-      console.log(appointmentDate.value);
+     
       this.appointmentDateVal = appointmentDate.value;
 
       if (this.finalmorngTimeSlot && this.finalmorngTimeSlot.length > 0) {
@@ -102,22 +102,28 @@ export class SlotCreateComponent implements OnInit {
           slotInterval: '30 mins',
           slot: this.finalmorngTimeSlot
         }
-        console.log('final submission of moring appointment' + JSON.stringify(moringSlotObj));
+        // console.log('final submission of moring appointment' + JSON.stringify(moringSlotObj));
         this.userService.addAppointmentSlot(moringSlotObj).subscribe((data: any) => {
-          console.log(data);
+         
           if(data['status'] == 'success'){
-          this.toastr.success('Appointment slot Updated', 'Success');
+          this.toastr.success(data['message'], 'Success');
           this.router.navigate(['/admin/appointmentslot-list']);
           }
+          
+        },
+        error => {
+            //  console.log('Login failed:Error');
+            this.toastr.error(error);
+            
         });
 
 
       } else {
-        this.toastr.error('Morning slot is required');
+        this.toastr.error('please click the add time slot button');
       }
 
     } else {
-      console.log('null val');
+    
       this.toastr.error('Slot date is required');
     }
 
@@ -142,11 +148,11 @@ export class SlotCreateComponent implements OnInit {
       this.evngStartTimeVal = this.convertFrom24To12Format(evngStartTime.value);
       //check validation slots exists or not**:
       let AvailabilityStatus = this.CheckTimeEvingSlotExistsOrNot(this.evngStartTimeVal);
-      console.log('FinalTimeStatus' + AvailabilityStatus);
+      // console.log('FinalTimeStatus' + AvailabilityStatus);
       // final submition notification**
       if (AvailabilityStatus) {
         evngStartTime.value = '';
-        this.toastr.success('Evening timeslot added', 'Success');
+        // this.toastr.success('Evening timeslot added', 'Success');
       } else {
         this.toastr.error('Time slot Already Exists');
       }
@@ -184,7 +190,7 @@ export class SlotCreateComponent implements OnInit {
   // FINALSUBMISSION OF EVENING APPOINTMENT**
   onSubmitEveningAppointment(appointmentDate) {
     if (appointmentDate.value) {
-      console.log(appointmentDate.value);
+     
       this.appointmentDateVal = appointmentDate.value;
 
       if (this.finalEvngTimeSlot && this.finalEvngTimeSlot.length > 0) {
@@ -199,7 +205,7 @@ export class SlotCreateComponent implements OnInit {
         // console.log('final submission of Evening appointment' + JSON.stringify(evngSlotObj));
 
         this.userService.addAppointmentSlot(evngSlotObj).subscribe((data: any) => {
-          console.log(data);
+         
           if(data['status'] == 'success'){
           this.toastr.success('Appointment slot Updated', 'Success');
           this.router.navigate(['/admin/appointmentslot-list']);
@@ -208,11 +214,11 @@ export class SlotCreateComponent implements OnInit {
 
 
       } else {
-        this.toastr.error('Evening slot is required');
+        this.toastr.error('please click the add time slot button');
       }
 
     } else {
-      console.log('null val');
+      
       this.toastr.error('Slot date is required');
     }
   }

@@ -9,31 +9,34 @@ const appointmentslotRoutes = express.Router();
 let Appointmentslot = require('../models/Appointmentslot');
 
 // Defined store route
-appointmentslotRoutes.route('/add').post(function(req, res) {
+appointmentslotRoutes.route('/add').post(async function(req, res) {
 
-    // let check = await Appointmentslot.findOne({ appointmentDate: req.body.appointmentDate, startTime: req.body.startTime }).lean()
-    // console.log(check)
-    // if (!check) {
-
-    // } else {
-    //     res.status(422).send({
-    //         status: 'fail',
-    //         message: 'Slot already exists'
-    //     })
-    // }
+    let isSlotExists = await Appointmentslot.findOne({ appointmentDate: req.body.appointmentDate, 'slot': { $in: req.body.slot } }).lean()
 
 
-    let saveSatus = new Appointmentslot(req.body);
-    saveSatus.save()
-        .then(saveSatus => {
-            res.status(200).json({
-                status: 'success',
-                message: 'Appointmentslot has been added successfully'
+    if (!isSlotExists) {
+
+        let saveSatus = new Appointmentslot(req.body);
+        saveSatus.save()
+            .then(saveSatus => {
+                res.status(200).json({
+                    status: 'success',
+                    message: 'Appointmentslot has been added successfully'
+                });
+            })
+            .catch(err => {
+                res.status(400).send("unable to save to database");
             });
+
+    } else {
+
+        res.status(422).send({
+            status: 'fail',
+            message: 'Slot already exists in this date'
         })
-        .catch(err => {
-            res.status(400).send("unable to save to database");
-        });
+    }
+
+
 });
 
 // Defined get data(index or listing) route
