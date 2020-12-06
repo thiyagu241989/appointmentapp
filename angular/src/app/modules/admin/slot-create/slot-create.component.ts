@@ -47,7 +47,7 @@ export class SlotCreateComponent implements OnInit {
       // final submition notification**
       if (AvailabilityStatus) {
         mrngStartTime.value = '';
-        this.toastr.success('Morning time slot added successfully', 'Success');
+        this.toastr.success('Morning time slot added', 'Success');
       } else {
         this.toastr.error('Time slot Already Exists');
       }
@@ -66,22 +66,17 @@ export class SlotCreateComponent implements OnInit {
         return false;
       } else {
         const mrngSlotTimeObj = {
-          slotType: '1',
-          slotEvent: 'morning',
           startTime: morngStartTimeVal,
-          slotInterval: '30 mins',
+          active: true,
         }
         this.finalmorngTimeSlot.push(mrngSlotTimeObj);
         return true;
       }
 
     } else {
-
       const mrngSlotTimeObj = {
-        slotType: '1',
-        slotEvent: 'morning',
         startTime: morngStartTimeVal,
-        slotInterval: '30 mins',
+        active: true,
       }
       this.finalmorngTimeSlot.push(mrngSlotTimeObj);
       // console.log('New Array:' + JSON.stringify(this.finalmorngTimeSlot));
@@ -102,6 +97,9 @@ export class SlotCreateComponent implements OnInit {
 
         const moringSlotObj = {
           appointmentDate: appointmentDate.value,
+          slotType: '1',
+          slotEvent: 'morning',
+          slotInterval: '30 mins',
           slot: this.finalmorngTimeSlot
         }
         console.log('final submission of moring appointment' + JSON.stringify(moringSlotObj));
@@ -120,7 +118,7 @@ export class SlotCreateComponent implements OnInit {
 
     } else {
       console.log('null val');
-      this.toastr.error('Appointment date is required');
+      this.toastr.error('Slot date is required');
     }
 
   }
@@ -148,7 +146,7 @@ export class SlotCreateComponent implements OnInit {
       // final submition notification**
       if (AvailabilityStatus) {
         evngStartTime.value = '';
-        this.toastr.success('Evening timeslot added successfully', 'Success');
+        this.toastr.success('Evening timeslot added', 'Success');
       } else {
         this.toastr.error('Time slot Already Exists');
       }
@@ -164,10 +162,8 @@ export class SlotCreateComponent implements OnInit {
         return false;
       } else {
         const evngSlotTimeObj = {
-          slotType: '2',
-          slotEvent: 'evening',
           startTime: evngStartTimeVal,
-          slotInterval: '30 mins',
+          active: true,
         }
 
         this.finalEvngTimeSlot.push(evngSlotTimeObj);
@@ -176,10 +172,8 @@ export class SlotCreateComponent implements OnInit {
 
     } else {
       const evngSlotTimeObj = {
-        slotType: '2',
-        slotEvent: 'evening',
         startTime: evngStartTimeVal,
-        slotInterval: '30 mins',
+        active: true,
       }
       this.finalEvngTimeSlot.push(evngSlotTimeObj);
       return true;
@@ -197,9 +191,12 @@ export class SlotCreateComponent implements OnInit {
 
         const evngSlotObj = {
           appointmentDate: appointmentDate.value,
+          slotType: '2',
+          slotEvent: 'evening',
+          slotInterval: '30 mins',
           slot: this.finalEvngTimeSlot
         }
-        console.log('final submission of Evening appointment' + JSON.stringify(evngSlotObj));
+        // console.log('final submission of Evening appointment' + JSON.stringify(evngSlotObj));
 
         this.userService.addAppointmentSlot(evngSlotObj).subscribe((data: any) => {
           console.log(data);
@@ -216,7 +213,7 @@ export class SlotCreateComponent implements OnInit {
 
     } else {
       console.log('null val');
-      this.toastr.error('Appointment date is required');
+      this.toastr.error('Slot date is required');
     }
   }
 

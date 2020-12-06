@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.fasset.exchange:60002', //  apiUrl: 'http://stsblockchain.cf:60002', 
+  apiUrl: 'http://localhost:4000', //  use proxy instead of this, 
 };

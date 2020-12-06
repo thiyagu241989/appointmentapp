@@ -34,7 +34,6 @@
                             </div>
                         </div>
 
-                        <!-- {{userData | json}} -->
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="table-responsive">
@@ -42,10 +41,11 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Appointment Date</th>
+                                            <th>Slot Date</th>
                                             <th>Session</th>
                                             <th>Start Time</th>
-                                            <th>Slot Interval</th>
+                                            <th>Interval</th>
+                                            <th>CreatedOn</th>
                                         </tr>
                                     </thead>
 
@@ -53,22 +53,30 @@
 
                                         <tr *ngFor="let rowData of userData | keyvalue; let i = index;">
                                             <td>{{ i + 1 }}</td>
-                                            <td>{{ appointmentDate }}</td>
-                                            <td>{{ rowData.value.slotEvent }}</td>
-                                            <td>{{ rowData.value.startTime }}</td>
-                                            <td><span class="badge badge-info">{{ rowData.value.slotInterval }}</span></td>
+                                            <td>{{ rowData.value.appointmentDate }}</td>
+                                            <td><span class="badge badge-warning">{{ rowData.value.slotEvent }}</span></td>
+                                            <td>
+                                                <b *ngFor="let rowVal of rowData.value.slot; let j = index;">
+                                                <span class="badge badge-info"> {{ rowVal.startTime }} </span> &nbsp;
+                                              </b>
+                                            </td>
+
+                                            <td>{{ rowData.value.slotInterval }}</td>
+                                            <td>{{ rowData.value.createdAt | date:'dd-MMM-yy h:mm a' }}</td>
                                         </tr>
                                     </tbody>
 
                                     <tfoot>
                                         <tr>
                                             <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search Id" name="search-Id" /></th>
-                                            <th><input type="text" class="form-control" autocomplete="off" placeholder="Search Slot appointment Date" name="search-Date" /></th>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search Slot appointment Date" name="search-Date" /></th>
                                             <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search session" name="search-session" />
                                             </th>
-                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search time" name="search-time" />
+                                            <th><input type="text" class="form-control" autocomplete="off" placeholder="Search time" name="search-time" />
                                             </th>
                                             <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search interval" name="search-interval" />
+                                            </th>
+                                            <th style="width:20%"><input type="text" class="form-control" autocomplete="off" placeholder="Search date" name="search-date" />
                                             </th>
                                         </tr>
                                     </tfoot>

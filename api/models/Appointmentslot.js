@@ -8,6 +8,15 @@ let Appointmentslot = new Schema({
     appointmentDate: {
         type: String
     },
+    slotType: {
+        type: String
+    },
+    slotEvent: {
+        type: String
+    },
+    slotInterval: {
+        type: String
+    },
     slot: {
         type: Array,
         default: null

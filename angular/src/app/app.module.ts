@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { ToastrModule } from 'ngx-toastr';                               // msg notification 
+import { ToastrService } from 'ngx-toastr';
 import * as $ from 'jquery';
 
 import { RouterModule } from '@angular/router';
@@ -33,13 +35,14 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
     NgxMaterialTimepickerModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    ToastrModule.forRoot(),
     AuthModule,
     RouterModule.forRoot(routes, { useHash: true })
   ],
   exports: [BrowserModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },ToastrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

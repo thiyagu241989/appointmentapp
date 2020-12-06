@@ -56,10 +56,7 @@ export class LoginComponent implements OnInit {
             password: ['', Validators.required]
         });
 
-        this.otpForm = this.formBuilder.group({
-            otp: ['', Validators.required]
-        });
-
+      
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
@@ -70,9 +67,7 @@ export class LoginComponent implements OnInit {
         return this.loginForm.controls;
     }
 
-    get s() {
-        return this.otpForm.controls;
-    }
+   
 
 
     toggleFieldTextType() {
@@ -92,15 +87,12 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    //   console.log(data)
-
                     this.alertService.success("Login successfully", true);
                     //  console.log(this.alertService);
                     this.loginStatus = false;
-                    this.loginOTPStatus = true;
                     this._loadingBar.complete();
                     //   console.log("dataa")
-                    this.router.navigate(['/auth/verify2fa']);
+                    this.router.navigate(['/admin/home']);
                 },
                 error => {
                     //  console.log('Login failed:Error');
@@ -110,50 +102,4 @@ export class LoginComponent implements OnInit {
                 });
     }
 
-
-    onSubmitOTP() {
-        // console.log('otp val:'+this.otpForm.value);
-        // stop here if form is invalid
-        if (this.otpForm.invalid) {
-            return;
-        }
-
-        this._loadingBar.start();
-        this.loading = true;
-
-        const objForm = {
-            email: this.f.email.value,
-            otp: this.s.otp
-        };
-
-        this.authenticationService.verifyOTP(objForm)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success("OTP hase been sent successfully to your registered mail ID", true);
-                    this._loadingBar.complete();
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    //  console.log('Login failed:Error');
-                    this.alertService.error(error);
-                    this._loadingBar.stop();
-                    this.loading = false;
-                });
-
-
-
-        // this.authenticationService.sendOTP(this.s.otp.value)
-        // .subscribe(
-        //     data => {
-        //         console.log('eeeeeeeee'+data);
-        //      //this.alertService.success("Login successfully", true);
-        //      //this._loadingBar.complete();
-        //     // this.router.navigate([this.returnUrl]);    
-        //     });
-
-
-    }
-
-    onSubmitResendOTP() { }
 }

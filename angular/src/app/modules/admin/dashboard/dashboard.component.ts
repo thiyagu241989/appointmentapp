@@ -19,12 +19,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   users: User[] = [];
   status: boolean = false;
 
-  dashboardInfo: any = {};
-  walletInfo: any = {};
-  currentMonthInfo: any = {};
-  lastMonthInfo: any = {};
-  currentWeekInfo: any = {};
-  lastWeekInfo: any = {};
+  userEmail;
+  userName;
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router,
@@ -40,16 +36,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   loadAllUsers() {
-    this.userService.getDashboardDetails().subscribe((data: any) => {
-      this.dashboardInfo = data;
-    //  console.log('dash info'+JSON.stringify(this.dashboardInfo));
-      this.walletInfo = data['walletBalances'];
-      this.currentMonthInfo = data['currentMonth'];
-      this.lastMonthInfo = data['lastMonth'];
-      this.currentWeekInfo = data['currentWeek'];
-      this.lastWeekInfo = data['lastWeek'];
-      
-    });
+  this.userEmail = localStorage.getItem('userEmail');
+  this.userName = localStorage.getItem('userName');
+   
   }
 
   ngOnDestroy() {

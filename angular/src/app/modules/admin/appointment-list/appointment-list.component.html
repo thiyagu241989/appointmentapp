@@ -23,6 +23,56 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+
+                <!-- /.col -->
+
+            </div>
+            <div class="row">
+                <div class="col-4 offset-1">
+                    <div class="card card-outline card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Choose Date </h3>
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <input type="date" #appointmentDate class="form-control" data-date-inline-picker="true" />
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="button" (click)="onSearchAppointment(appointmentDate)" class="btn btn-success"><i class="fas fa-search"></i> Search</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"> <i class="far fa-calendar-alt"></i> </span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Total Count</span>
+                            <span class="info-box-number">
+                            {{ appointmentCountData }}
+                            <!-- <small>%</small> -->
+                          </span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -34,7 +84,7 @@
                             </div>
                         </div>
 
-                        {{userData | json}}
+
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="table-responsive">
@@ -47,6 +97,7 @@
                                             <th>Contact</th>
                                             <th>Start Time</th>
                                             <th>Session</th>
+                                            <th>Date</th>
 
                                         </tr>
                                     </thead>
@@ -54,11 +105,12 @@
                                     <tbody>
 
                                         <tr *ngFor="let rowData of userData | keyvalue; let i = index;">
-                                            <td><img src="assets/img/profile/{{ i + 1 }}.jpg" style="height: 80px"></td>
+                                            <td><img src="assets/img/profile/{{ i + 1 }}.jpg" style="height: 40px"></td>
                                             <td>{{ rowData.value.name }}</td>
                                             <td>{{ rowData.value.contact }}</td>
                                             <td>{{ rowData.value.startTime }}</td>
                                             <td>{{ rowData.value.slotEvent }}</td>
+                                            <td>{{ rowData.value.appointmentDate }}</td>
                                         </tr>
                                     </tbody>
                                     <!-- <tbody *ngIf="!userData?.length > 0">
@@ -69,12 +121,14 @@
                                     <tfoot>
                                         <tr>
                                             <th style="width:10%"></th>
-                                            <th><input type="text" class="form-control" autocomplete="off" placeholder="Search Name" name="search-Name" /></th>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search Name" name="search-Name" /></th>
                                             <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search Contact" name="search-mail" />
                                             </th>
                                             <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search time" name="search-time" />
                                             </th>
                                             <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search event" name="search-event" />
+                                            </th>
+                                            <th style="width:10%"><input type="text" class="form-control" autocomplete="off" placeholder="Search Date" name="search-date" />
                                             </th>
 
                                         </tr>

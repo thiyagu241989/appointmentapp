@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://api.fasset.exchange:60002', //  apiUrl: 'http://stsblockchain.cf:60002', 
+    apiUrl: 'https://localhost:4000', 
 };
 
 /*

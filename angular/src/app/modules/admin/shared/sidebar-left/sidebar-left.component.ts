@@ -31,7 +31,7 @@ export class SidebarLeftComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userMail = localStorage.getItem('email');
+    this.userMail = localStorage.getItem('userEmail');
   }
 
   ngOnDestroy() {

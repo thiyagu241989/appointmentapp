@@ -56,13 +56,11 @@ app.use(cors({
 
 //Router define:------------------------------------
 const authRoute = require('./routes/auth.route');
-const userRoute = require('./routes/user.route');
 const appointmentslotRoute = require('./routes/appointmentslot.route');
 const appointmentlistRoute = require('./routes/appointmentlist.route');
 
 //router call:-------------------------------------
 app.use('/auth', authRoute);
-app.use('/users', userRoute);
 app.use('/appointmentslot', appointmentslotRoute);
 app.use('/appointmentlist', appointmentlistRoute);
 

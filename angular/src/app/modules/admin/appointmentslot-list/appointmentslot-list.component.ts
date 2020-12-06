@@ -3,10 +3,6 @@ import { DataTableDirective } from 'angular-datatables';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs'; //ngTriggers
-//date picker & time format:
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { first } from 'rxjs/operators';
-
 
 import { UserService } from './../../admin/core/_services';
 
@@ -43,9 +39,10 @@ export class AppointmentslotListComponent implements OnInit {
   //BackEnd Call Api:----------------------------------------------
   getAllRestApiResponse() {
       this.userService.getAppointmentSlot().subscribe(data => {
-         
-          this.userData = data[0]['slot'];
-          this.appointmentDate = data[0]['appointmentDate'];
+         console.log('dataaa'+JSON.stringify(data));
+         this.userData = data;
+        //   this.userData = data[0]['slot'];
+        //   this.appointmentDate = data[0]['appointmentDate'];
     
           /* Calling the DT trigger to manually render the table*/
           this.dtTrigger.next();

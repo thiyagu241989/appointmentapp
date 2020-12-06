@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-//import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,11 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';        			    //[Bootstrap-ui]
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar'; 			      //[Loading-Bar]
 import { MaterialModule } from './core/_material/material.module';      //[core-material]
-import { SimpleModalModule } from 'ngx-simple-modal';    			          //[modal]
+
 import { DataTablesModule } from 'angular-datatables';                    //-->DataTable
 import { ToastrModule } from 'ngx-toastr';                               // msg notification 
 import { ToastrService } from 'ngx-toastr';
-import { UiSwitchModule } from 'ngx-ui-switch';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 //Root ----------------------------------------------
 import { AdminRoutingModule } from './admin-routing.module';
@@ -44,13 +42,12 @@ import { AppointmentslotListComponent } from './appointmentslot-list/appointment
     NgbModule,
     SharedModule,
     MaterialModule,
-    SimpleModalModule,
+   
     FormsModule,
     NgxMaterialTimepickerModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     ToastrModule.forRoot(),
     DataTablesModule,
-    UiSwitchModule,
     AdminRoutingModule
   ],
   providers: [ToastrService]

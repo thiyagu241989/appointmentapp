@@ -17,16 +17,17 @@ export class UserService {
     constructor(private http: HttpClient, private router: Router) {
     }
 
-    getDashboardDetails() {
-        return this.http.get(`${this.ENVIRONMENT_URL}/admin/dashboard`)
+
+    getAppointmentDetails() {
+        return this.http.get(`api/appointmentlist/view`)
             .pipe(map((data: any) => {
                 return data;
             }));
 
     }
 
-    getAppointmentDetails() {
-        return this.http.get(`api/appointmentlist/view`)
+    getAppointmentSearchDetail(data) {
+        return this.http.get(`api/appointmentlist/view?date=` + data)
             .pipe(map((data: any) => {
                 return data;
             }));
@@ -41,70 +42,14 @@ export class UserService {
 
     }
     addAppointmentSlot(data) {
-        // return this.http.post(`api/users/add`, user);      //nodejs
-		return this.http.post(`api/appointmentslot/add`, data);
-    }
-	
-	//node-server-api -------------------------------------------------------------
-   
-	 
-     add(data) {
-        // return this.http.post(`api/users/add`, user);      //nodejs
-		return this.http.post(`api/users/add`, data);
+        return this.http.post(`api/appointmentslot/add`, data);
     }
 
-	getAll() {
-	//  return this.http.get<User[]>(`api/users`);
-	 
-	 return this.http.get(`api/users`)
-           .pipe(map((data: any) => {
-               return data;
-           }));
-       
-    }
-	    
-	edit(id: number) {
-        return this.http.get(`api/users/edit/${id}`);
-    }
-	
-    update(user: User) {
-        // return this.http.post(`api/users/add`, data);
-	    return this.http.post(`api/users/update/${user.id}`, user);
-    }
-
-    delete(id: string) {
-        return this.http.get(`api/users/delete/${id}`);
-    }
-
-    getById(id: number) {  //use in angular-table views:
-        return this.http.get(`api/users/edit/${id}`);
-    }
-
-    register(user: User) {
-        return this.http.post(`api/auth/register`, user);      //nodejs
-    }
-	
-	mailVerification(id: string) {
-        return this.http.get(`api/auth/verify/${id}`);
-    }
-	
-	socialRegister(user: User) {
-        return this.http.post(`api/auth/socialAuthReg`, user);      //nodejs
-    }
-	
-	addDeviceInfo(user: User, id: string) {
-        return this.http.post(`api/users/addDeviceInfo`, {user, id});      //nodejs
-    }
-	
-	
-	
     //-----------------------------------------------------------------------------------
 
     headerAuthorization() {
         console.log('token H:' + localStorage.getItem('token'));
         return new HttpHeaders().set("Authorization", localStorage.getItem('token'));
-        // return new HttpHeaders().set("Authorization", 'Bearer ' + localStorage.getItem('token'));
-        //  console.log('check header'+JSON.stringify(headers_object));
     }
-    
+
 }
